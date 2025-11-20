@@ -37,7 +37,7 @@ body {
 }
 
 .container {
-    background-image: url("images/ST_CHARLES.jpg");
+    background-image: url("images/stcharles.jpg");
 }
 
 .container2 {
@@ -45,7 +45,7 @@ body {
 }
 
 .container3 {
-    background-image: url("images/USA.jpg");
+    background-image: url("images/usa.jpg");
 }
 
 .main-header {
@@ -179,11 +179,11 @@ h1 {
 }
 
 .p7 {
-    bottom: 44%;
+    bottom: 46%;
     color: white;
     font-size: 1.4vw;
     font-weight: bold;
-    width: 265px;
+    width: 300px;
 }
 
 .p8 {
@@ -197,7 +197,7 @@ h1 {
 .p9,
 .p10 {
     position: absolute;
-    right: 21.5%;
+    right: 25%;
     text-align: center;
     line-height: 1.5;
 }
@@ -207,14 +207,15 @@ h1 {
     color: white;
     font-size: 1.4vw;
     font-weight: bold;
-    width: 197px;
+    width: 275px;
+    
 }
 
 .p10 {
     top: calc(14% + 2.2vw);
     color: #e2e2e2;
     font-size: 1vw;
-    width: 200px;
+    width: 265px;
 }
 
 .slider-content {
@@ -294,7 +295,7 @@ h1 {
     position: absolute;
     bottom: 100px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX( -50%);
     z-index: 20;
 }
 
@@ -362,7 +363,6 @@ h1 {
     box-shadow: 0 0 0 4px white, 0 0 0 6px black;
 }
 
-/* icon markers */
 .icon-marker,
 .icon-marker2,
 .icon-marker3 {
@@ -381,13 +381,13 @@ h1 {
 
 .icon-marker2 {
     top: 450px;
-    right: 300px;
+    right: 600px;
     transform: translateY(-50%);
 }
 
 .icon-marker3 {
-    bottom: 250px;
-    right: 15px;
+    bottom: 35px;
+    right: 1150px;
     transform: translateY(-50%);
 }
 
@@ -409,7 +409,6 @@ h1 {
     filter: brightness(1.2);
 }
 
-/* About section */
 .about-body {
     scroll-snap-align: start;
     max-width: 800px;
@@ -425,7 +424,6 @@ h1 {
     font-family: 'Moo Lah Lah', sans-serif;
 }
 
-/* Marker body */
 .marker-body-container {
     scroll-snap-align: start;
     height: 100vh;
@@ -449,7 +447,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Carousel */
 .carousel {
     width: 100vw;
     height: 100vh;

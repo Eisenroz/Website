@@ -38,11 +38,11 @@ html, body {
 }
 
 .container {
-  background-image: url("images/stcharles.jpg");
+  background-image: url("images/ST\ CHARLES.jpg");
 }
 
 .container2 {
-  background-image: url("images/Missourii.jpg");
+  background-image: url("images/Missouri.jpg");
 }
 
 .container3 {
@@ -285,7 +285,7 @@ h1 {
   width: 80vw;
   max-width: 600px;
   height: 8px;
-  background: #000;
+  background: #414141;
   border-radius: 4px;
   position: absolute;
   bottom: 100px;
@@ -303,7 +303,7 @@ h1 {
   background: #fff;
   cursor: pointer;
   margin-top: -6px;
-  border: 1px solid #000;
+  border: 1px solid #ffffff;
 }
 
 #toggle-view-button {

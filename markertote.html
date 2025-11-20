@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Moo+Lah+Lah&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="main-header" id="mainHeader">
+    <a href="index.html" class="logo">Moo Lah Lah</a>
+    <nav>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+  </header>
+
+ <main class="marker-section">
+
+  <section class="container3" id="container3">
+    <div class="carousel" id="imageCarousel">
+      <div class="carousel-track">
+        <img class="carousel-image" src="images/icon.jpg" />
+        <img class="carousel-image" src="images/icon2.jpg" />
+        <img class="carousel-image" src="images/icon3.jpg" />
+      </div>
+      <div class="carousel-nav" id="carouselNav">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="marker-body-container">
+    <div class="marker-body">
+      <p class="about-lead">
+        This marker represents the playful spirit of Moo Lah Lah—bold, round, and full of personality.
+      </p>
+      <p>
+        Designed to complement the typeface, the marker icon is a visual anchor for branding, signage, and interactive elements. It’s not just a graphic—it’s a character.
+      </p>
+      <p>
+        Whether used on packaging, websites, or print materials, the Moo Lah Lah marker adds a touch of whimsy and recognition to your design system.
+      </p>
+      <p>
+        The marker page is designed to showcase multiple images in a carousel above, while this section provides context and storytelling below. Scroll snapping ensures each section feels distinct and immersive.
+      </p>
+    </div>
+  </section>
+</main>
+<script>
+  const track = document.querySelector('.carousel-track');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+let autoplayInterval;
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    currentIndex = parseInt(dot.dataset.index);
+    updateCarousel();
+    resetAutoplay(); 
+  });
+});
+
+function updateCarousel() {
+  track.style.transform = `translateX(-${currentIndex * 100}vw)`;
+  dots.forEach(d => d.classList.remove('active'));
+  dots[currentIndex].classList.add('active');
+}
+
+let startX = 0;
+let endX = 0;
+
+track.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const threshold = 50;
+  const swipeDistance = endX - startX;
+
+  if (swipeDistance > threshold && currentIndex > 0) {
+    currentIndex--;
+    updateCarousel();
+    resetAutoplay();
+  } else if (swipeDistance < -threshold && currentIndex < dots.length - 1) {
+    currentIndex++;
+    updateCarousel();
+    resetAutoplay();
+  }
+}
+
+function startAutoplay() {
+  autoplayInterval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % dots.length; 
+    updateCarousel();
+  }, 4000);
+}
+
+function resetAutoplay() {
+  clearInterval(autoplayInterval);
+  startAutoplay();
+}
+
+updateCarousel();
+startAutoplay();
+</script>
+
+</body>
+<footer class="site-footer">
+  <p>&copy; 2025 Moo Lah Lah Showcase. All rights reserved.</p>
+  <p>
+    Sources: 
+    <a href="sources.html" target="_blank">View References</a>
+  </p>
+</footer>
+</html>

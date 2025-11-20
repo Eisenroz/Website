@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moo Lah Lah Font Showcase</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Moo+Lah+Lah&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scroll-container">
+    <header class="main-header" id="mainHeader">
+      <a href="#" class="logo">Moo Lah Lah</a>
+      <nav>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+    </header>
+
+    <section class="container" id="container1">
+      <main>
+        <h1>Moo</h1>
+        <p>Lah Lah</p>
+        <div class="p2">Robert Leuschke</div>
+        <div class="p3">Need a font with bovine FUN?</div>
+        <div class="p4">Moo Lah Lah has that look! A delightful font with its unique, playful cow-print typefaces. Bring the fun, whimsical, and distinctive flair to any project with Moo Lah Lah!</div>
+      </main>
+    </section>
+
+    <section class="container2" id="container2">
+      <div class="slider-content">
+        <div class="display-area">
+          <span id="font-letter-display">Aa</span>
+          <img id="full-typeface-display" src="" alt="Full Moo Lah Lah Typeface" />
+        </div>
+        <input type="range" id="letter-slider" min="0" max="45" value="0" />
+        <button id="toggle-view-button">Show all typefaces</button>
+      </div>
+
+      <div id="color-palette">
+        <div class="color-swatch" style="background-color: black;" data-color="black"></div>
+        <div class="color-swatch" style="background-color: white;" data-color="white"></div>
+        <div class="color-swatch" style="background-color: #795548;" data-color="#795548"></div>
+        <div class="color-swatch" style="background-color: #c0392b;" data-color="#c0392b"></div>
+        <div class="color-swatch" style="background-color: #27ae60;" data-color="#27ae60"></div>
+      </div>
+
+      <main class="main2">
+        <div class="p5">HIGHLIGHTS</div>
+        <div class="p6">Check out all of the typefaces of Moo Lah Lah!</div>
+        <div class="p7">Try some colors</div>
+        <div class="p8">Explore the fun with our select color palette!</div>
+      </main>
+    </section>
+
+    <section class="container3" id="container3">
+      <main class="main3">
+         <div class="p9">Compositions</div>
+          <div class="p10">The fun doesn't end here! check out the different ways this font can be used</div>
+        <div class="icon-marker">
+          <a href="markertote.html">
+            <img src="images/markers.png" alt="Icon 1" />
+            <a href="markertote.html">
+        <div class="icon-marker2">
+          <a href="Typeimage.html">
+            <img src="images/markers2.png" alt="Icon 2" />
+            <a href="Typeimage.html">
+         <div class="icon-marker3">
+          <a href="Favouritetypeface.html">
+            <img src="images/markers3.png" alt="Icon 3" />
+            <a href="Favouritetypeface.html">
+          </a>
+        </div>
+      </main>
+    </section>
+  </div>
+<footer class="site-footer">
+  <p>&copy; 2025 Moo Lah Lah Showcase. All rights reserved.</p>
+  <p>
+    Sources: 
+    <a href="sources.html" target="_blank">View References</a>
+  </p>
+</footer>
+<script>
+  const header = document.getElementById('mainHeader');
+  let lastScrollY = window.scrollY;
+  const headerHeightThreshold = 80;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY && currentScrollY > headerHeightThreshold) {
+      header.classList.add('header-hidden');
+    } else if (currentScrollY < lastScrollY || currentScrollY <= headerHeightThreshold) {
+      header.classList.remove('header-hidden');
+    }
+    lastScrollY = currentScrollY;
+  });
+
+  const slider = document.getElementById('letter-slider');
+  const display = document.getElementById('font-letter-display');
+  const fullTypefaceDisplay = document.getElementById('full-typeface-display');
+  const toggleButton = document.getElementById('toggle-view-button');
+  const sliderContent = document.querySelector('.slider-content');
+  const colorPalette = document.getElementById('color-palette');
+
+  const COLOR_IMAGE_MAP = {
+    black: 'images/Missouri black.png',
+    white: 'images/Missouri white.png',
+    '#795548': 'images/Missouri brown.png',
+    '#c0392b': 'images/Missouri red.png',
+    '#27ae60': 'images/Missouri green.png',
+  };
+
+  const CHARACTER_MAP = [
+    "Aa","Bb","Cc","Dd","Ee","Ff","Gg","Hh","Ii","Jj","Kk","Ll","Mm",
+    "Nn","Oo","Pp","Qq","Rr","Ss","Tt","Uu","Vv","Ww","Xx","Yy","Zz",
+    "1!","2@","3#","4$","5%","6^","7&","8*","9(","0)",
+    "-_","=+","[{","]}","\\|",";:","'\"","<,",".>","/?"
+  ];
+
+  slider.max = CHARACTER_MAP.length - 1;
+  let isShowingImage = false;
+  let currentColor = 'black';
+
+  function updateLetterDisplay() {
+    if (!isShowingImage) {
+      const index = parseInt(slider.value);
+      display.textContent = CHARACTER_MAP[index];
+      display.style.color = currentColor;
+    }
+  }
+
+  function handleColorChange(newColor) {
+    currentColor = newColor;
+    if (isShowingImage) {
+      const imagePath = COLOR_IMAGE_MAP[newColor];
+      if (imagePath) fullTypefaceDisplay.src = imagePath;
+    } else {
+      display.style.color = newColor;
+    }
+  }
+
+  slider.addEventListener('input', updateLetterDisplay);
+
+  toggleButton.addEventListener('click', () => {
+    isShowingImage = !isShowingImage;
+    sliderContent.classList.toggle('show-image', isShowingImage);
+    if (isShowingImage) {
+      toggleButton.textContent = 'Show Single Letter';
+      display.style.opacity = 0;
+      fullTypefaceDisplay.src = COLOR_IMAGE_MAP[currentColor];
+    } else {
+      toggleButton.textContent = 'Show all typefaces';
+      display.style.opacity = 1;
+      updateLetterDisplay();
+    }
+  });
+
+  colorPalette.addEventListener('click', (event) => {
+    const swatch = event.target.closest('.color-swatch');
+    if (swatch) {
+      const color = swatch.getAttribute('data-color');
+      handleColorChange(color);
+    }
+  });
+
+  updateLetterDisplay();
+  handleColorChange('black');
+  
+</script>
